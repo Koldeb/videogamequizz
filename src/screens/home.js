@@ -1,10 +1,10 @@
 import React from 'react';
-import GetVideogames from '../components/GetVideogames';
+import GetVideogames from '../components/GetVideoGames/';
 
 const Home = () => {
   return (
     <>
-      <div>salut</div>
+      <div>HOME PAGE </div>
       <GetVideogames />
     </>
   );
