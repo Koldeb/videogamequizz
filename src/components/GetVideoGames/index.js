@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import games from './api/games';
-import { StyledButton, StyledImg } from './styles';
+import { StyledButton, StyledImg, StyledAnswer } from './styles';
 
 const GetVideogames = () => {
   const [videoGame, setvideoGame] = useState([]);
@@ -21,24 +21,41 @@ const GetVideogames = () => {
   const getRandomName = () => {
     return games[getRandomInt(0, games.length)].title;
   };
-
+  // const bgcolor = styled.button
   const handleClickAnswer = answer => {
-    answer === videoGame.name
-      ? alert(answer)
-      : alert(`La bonne réponse était ${videoGame.name}`);
+    answer = answer === videoGame.name ? true : false;
+    // answer ? (bgcolor = 'green') : (bgcolor = 'red');
+    console.log(answer);
   };
+
   const shuffleButton = () => {
     const buttonArray = [
-      <StyledButton key='0' onClick={() => handleClickAnswer(videoGame.name)}>
+      <StyledButton
+        // background-color={bgcolor}
+        key='0'
+        onClick={() => handleClickAnswer(videoGame.name)}
+      >
         {videoGame.name}
       </StyledButton>,
-      <StyledButton key='1' onClick={() => handleClickAnswer(getRandomName())}>
+      <StyledButton
+        // background-color={bgcolor}
+        key='1'
+        onClick={() => handleClickAnswer(getRandomName())}
+      >
         {getRandomName()}
       </StyledButton>,
-      <StyledButton key='2' onClick={() => handleClickAnswer(getRandomName())}>
+      <StyledButton
+        // background-color={bgcolor}
+        key='2'
+        onClick={() => handleClickAnswer(getRandomName())}
+      >
         {getRandomName()}
       </StyledButton>,
-      <StyledButton key='3' onClick={() => handleClickAnswer(getRandomName())}>
+      <StyledButton
+        // background-color={bgcolor}
+        key='3'
+        onClick={() => handleClickAnswer(getRandomName())}
+      >
         {getRandomName()}
       </StyledButton>
     ];
@@ -67,12 +84,11 @@ const GetVideogames = () => {
   }, []);
   return (
     <>
-      <div>Get Video Games</div>
       <StyledImg
         src={videoGame.background_image}
-        alt={`${videoGame.description}`}
+        alt={`T'auras pas la réponse en regardant les alt :)`}
       />
-      {shuffleButton()}
+      <StyledAnswer>{shuffleButton()}</StyledAnswer>
     </>
   );
 };
