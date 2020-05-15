@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Timer from '../Timer';
 import games from './api/games';
-import { StyledButton, StyledImg, StyledAnswer } from './styles';
+import { StyledButton, StyledImg, StyledAnswer, StyledCard } from './styles';
 
 const GetVideogames = () => {
   const [videoGame, setvideoGame] = useState([]);
@@ -21,10 +22,9 @@ const GetVideogames = () => {
   const getRandomName = () => {
     return games[getRandomInt(0, games.length)].title;
   };
-  // const bgcolor = styled.button
+
   const handleClickAnswer = answer => {
     answer = answer === videoGame.name ? true : false;
-    // answer ? (bgcolor = 'green') : (bgcolor = 'red');
     console.log(answer);
   };
 
@@ -71,24 +71,26 @@ const GetVideogames = () => {
         }
       })
         .then(response => {
-          console.log(response.data);
           return response.data;
         })
         .catch(err => {
           console.error(err);
         });
       setvideoGame(res);
-      console.log(res);
     }
     fetchData();
   }, []);
+
   return (
     <>
-      <StyledImg
-        src={videoGame.background_image}
-        alt={`T'auras pas la réponse en regardant les alt :)`}
-      />
-      <StyledAnswer>{shuffleButton()}</StyledAnswer>
+      <Timer />
+      <StyledCard>
+        <StyledImg
+          src={videoGame.background_image}
+          alt={`T'auras pas la réponse en regardant les alt :)`}
+        />
+        <StyledAnswer>{shuffleButton()}</StyledAnswer>
+      </StyledCard>
     </>
   );
 };
