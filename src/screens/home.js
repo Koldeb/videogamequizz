@@ -1,11 +1,17 @@
 import React from 'react';
-import GetVideogames from '../components/GetVideoGames/';
+import Timer from '../components/Timer';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
     <>
-      <div>HOME PAGE </div>
-      <GetVideogames />
+      <h1> Quizz Jeux Vidéo </h1>
+      <p>
+        <span>But du jeu :</span>
+        <br />
+        Trouver les 10 bonnes réponses des jeux présentés
+      </p>
+      <Link to='/quizz'>Quizz</Link>
     </>
   );
 };

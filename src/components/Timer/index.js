@@ -8,11 +8,6 @@ const Timer = () => {
     setIsActive(!isActive);
   }
 
-  function reset() {
-    setSeconds(0);
-    setIsActive(false);
-  }
-
   useEffect(() => {
     let interval = null;
     if (isActive) {
@@ -35,10 +30,7 @@ const Timer = () => {
           }`}
           onClick={toggle}
         >
-          {isActive ? 'Pause' : 'Start'}
-        </button>
-        <button className='button' onClick={reset}>
-          Reset
+          Start
         </button>
       </div>
     </>
