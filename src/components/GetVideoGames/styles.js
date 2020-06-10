@@ -35,4 +35,7 @@ export const StyledImg = styled.img`
   max-width: 540px;
   display: block;
   margin: 0 auto;
+  @media (max-width: 540px) {
+    max-width: 300px;
+  }
 `;
