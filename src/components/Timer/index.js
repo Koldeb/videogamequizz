@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { StyledTimer } from './styles';
 
 const Timer = () => {
   const [seconds, setSeconds] = useState(0);
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
 
-  function toggle() {
-    setIsActive(!isActive);
-  }
+  // function toggle() {
+  //   setIsActive(!isActive);
+  // }
 
   useEffect(() => {
     let interval = null;
@@ -22,17 +23,7 @@ const Timer = () => {
 
   return (
     <>
-      <div className='time'>{seconds}s</div>
-      <div className='row'>
-        <button
-          className={`button button-primary button-primary-${
-            isActive ? 'active' : 'inactive'
-          }`}
-          onClick={toggle}
-        >
-          Start
-        </button>
-      </div>
+      <StyledTimer className='time'>{seconds}s</StyledTimer>
     </>
   );
 };

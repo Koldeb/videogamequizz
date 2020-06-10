@@ -5,15 +5,15 @@ import {
   Redirect,
   Switch
 } from 'react-router-dom';
-import Home from '../screens/home';
-import GetVideogames from '../components/GetVideoGames';
+import Home from '../screens/Home/home';
+import Quizz from '../screens/Quizz/quizz';
 
 const Routes = () => {
   return (
     <Router>
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route exact path='/quizz/:id' component={GetVideogames} />
+        <Route exact path='/quizz' component={Quizz} />
         <Redirect to='/' />
       </Switch>
     </Router>

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Timer from '../Timer';
 import games from './api/games';
 import { StyledButton, StyledImg, StyledAnswer, StyledCard } from './styles';
+import Score from '../Score';
 
 const GetVideogames = () => {
   const [videoGame, setvideoGame] = useState([]);
+  let [score, setScore] = useState(0);
 
   let randomNumber = 1;
   const getRandomInt = (min, max) => {
@@ -25,7 +26,11 @@ const GetVideogames = () => {
 
   const handleClickAnswer = answer => {
     answer = answer === videoGame.name ? true : false;
-    console.log(answer);
+    if (answer === true) {
+      setScore(score + 1);
+    } else {
+      setScore(score - 1);
+    }
   };
 
   const shuffleButton = () => {
@@ -61,6 +66,7 @@ const GetVideogames = () => {
     ];
     return buttonArray.sort(() => Math.random() - 0.5);
   };
+
   useEffect(() => {
     async function fetchData() {
       const res = await axios({
@@ -79,11 +85,11 @@ const GetVideogames = () => {
       setvideoGame(res);
     }
     fetchData();
-  }, []);
+  }, [score]);
 
   return (
     <>
-      <Timer />
+      <Score score={score} />
       <StyledCard>
         <StyledImg
           src={videoGame.background_image}
